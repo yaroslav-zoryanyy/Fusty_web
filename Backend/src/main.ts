@@ -1,9 +1,8 @@
-// import module from '../models/models.ts';
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 
-import sequelize from "./db";
+import {sequelize} from "./db/main";
 import { mainRouter } from "./routers/index.router";
 
 const PORT = process.env.PORT || 5000;

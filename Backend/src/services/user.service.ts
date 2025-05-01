@@ -1,14 +1,38 @@
+import { ApiError } from "../errors/api-error";
+import {IUser, IUserDto} from "../interfaces/user.interface";
 import { userRepository } from "../repositories/user.repository";
 
 class UserService {
-  public async create(dto: Partial<any>): Promise<any> {
-    return await userRepository.create(dto);
+  public async getAllUsers(): Promise<IUser[]> {
+    return await userRepository.getAllUsers();
   }
-  public async login(dto: Partial<any>): Promise<any> {
-    return await userRepository.create(dto);
+
+  public async createUser(dto: Partial<any>): Promise<IUser> {
+    return await userRepository.createUser(dto);
   }
-  public async check(): Promise<any[]> {
-    return await userRepository.check();
+
+  public async getUserById(id: string): Promise<IUser> {
+    const services = await userRepository.getUserById(id);
+    if (!services) {
+      throw new ApiError("User not found", 404);
+    }
+    return services;
+  }
+
+  public async updateUser(id: string, dto: IUserDto): Promise<IUser> {
+    const user = await userRepository.getUserById(id);
+    if (!user) {
+      throw new ApiError("User not found", 404);
+    }
+    return await userRepository.updateUserById(id, dto);
+  }
+
+  public async deleteUser(id: string): Promise<void> {
+    const services = await userRepository.getUserById(id);
+    if (!services) {
+      throw new ApiError("User not found", 404);
+    }
+    await userRepository.deleteUserById(id);
   }
 }
 

@@ -1,6 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "src/main.ts",
   "scripts": {
@@ -16,7 +17,6 @@
     "@types/cors": "^2.8.17",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-    "enum": "^3.0.4",
     "express": "^4.21.2",
     "pg": "^8.14.0",
     "pg-hstore": "^2.3.4",
@@ -44,6 +44,7 @@
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "tsc-watch": "^6.2.1",
+    "typescript": "^5.8.3",
     "typescript-eslint": "^8.26.1"
   },
   "lint-staged": {
