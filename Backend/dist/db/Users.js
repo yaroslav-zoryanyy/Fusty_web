@@ -1,8 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
-const main_1 = require("./main");
-const Users = main_1.sequelize.define("Users", {
+const main_1 = __importDefault(require("./main"));
+const users = main_1.default.define("users", {
     id: { type: sequelize_1.DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     phone: { type: sequelize_1.DataTypes.STRING, unique: true, allowNull: false },
     password: { type: sequelize_1.DataTypes.STRING, allowNull: false },
@@ -16,4 +19,4 @@ const Users = main_1.sequelize.define("Users", {
     timestamps: false,
     tableName: "users",
 });
-exports.default = Users;
+exports.default = users;

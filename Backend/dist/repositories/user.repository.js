@@ -8,7 +8,7 @@ const Users_1 = __importDefault(require("../db/Users"));
 class UserRepository {
     async getAllUsers() {
         const all_users_raw = await Users_1.default.findAll();
-        return all_users_raw.map(user => user.get({ plain: true }));
+        return all_users_raw.map((user) => user.get({ plain: true }));
     }
     async createUser(dto) {
         const newUser = await Users_1.default.create({

@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import {IUserDto} from "../interfaces/user.interface";
-import {userService} from "../services/user.service";
+
+import { IUserDto } from "../interfaces/user.interface";
+import { userService } from "../services/user.service";
 
 class UserController {
   public async getAllUsers(req: Request, res: Response, next: NextFunction) {
@@ -22,11 +23,7 @@ class UserController {
     }
   }
 
-  public async getUserById(
-    req: Request,
-    res: Response,
-    next: NextFunction,
-  ) {
+  public async getUserById(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
       const result = await userService.getUserById(id);

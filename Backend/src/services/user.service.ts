@@ -1,5 +1,5 @@
 import { ApiError } from "../errors/api-error";
-import {IUser, IUserDto} from "../interfaces/user.interface";
+import { IUser, IUserDto } from "../interfaces/user.interface";
 import { userRepository } from "../repositories/user.repository";
 
 class UserService {

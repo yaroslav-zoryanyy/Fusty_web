@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const express_1 = __importDefault(require("express"));
-const main_1 = require("./db/main");
+const main_1 = __importDefault(require("./db/main"));
 const index_router_1 = require("./routers/index.router");
 const PORT = process.env.PORT || 5000;
 const app = (0, express_1.default)();
@@ -16,8 +16,8 @@ app.use(express_1.default.json());
 app.use("/api", index_router_1.mainRouter);
 const start = async () => {
     try {
-        await main_1.sequelize.authenticate();
-        await main_1.sequelize.sync();
+        await main_1.default.authenticate();
+        await main_1.default.sync({ force: false });
         app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
     }
     catch (error) {
