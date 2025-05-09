@@ -12,13 +12,18 @@ class UserRepository {
     }
     async createUser(dto) {
         const newUser = await Users_1.default.create({
-            password: dto.password,
+            name: dto.name,
+            email: dto.email,
+            age: dto.age,
+            surname: dto.surname,
+            address: dto.address,
             phone: dto.phone,
+            password: dto.password,
         });
         return newUser.get({ plain: true });
     }
-    async getUserById(id) {
-        const user = await Users_1.default.findByPk(id);
+    async getUserById(userId) {
+        const user = await Users_1.default.findByPk(userId);
         return user ? user.get({ plain: true }) : null;
     }
     async updateUserById(id, dto) {
@@ -26,6 +31,12 @@ class UserRepository {
     }
     async deleteUserById(id) {
         await Users_1.default.destroy({ where: { id } });
+    }
+    async getByEmail(email) {
+        return await Users_1.default.findOne({ where: { email }, raw: true });
+    }
+    async getByPhone(phone) {
+        return await Users_1.default.findOne({ where: { phone }, raw: true });
     }
 }
 exports.userRepository = new UserRepository();

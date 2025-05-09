@@ -7,14 +7,36 @@ const sequelize_1 = require("sequelize");
 const main_1 = __importDefault(require("./main"));
 const users = main_1.default.define("users", {
     id: { type: sequelize_1.DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    phone: { type: sequelize_1.DataTypes.STRING, unique: true, allowNull: false },
-    password: { type: sequelize_1.DataTypes.STRING, allowNull: false },
-    name: { type: sequelize_1.DataTypes.STRING, allowNull: true },
-    surname: { type: sequelize_1.DataTypes.STRING, allowNull: true },
-    login: { type: sequelize_1.DataTypes.STRING, allowNull: true },
-    address: { type: sequelize_1.DataTypes.STRING, allowNull: true },
-    access_token: { type: sequelize_1.DataTypes.STRING, allowNull: true },
-    refresh_token: { type: sequelize_1.DataTypes.STRING, allowNull: true },
+    phone: {
+        type: sequelize_1.DataTypes.STRING,
+        unique: true,
+        allowNull: false,
+    },
+    password: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
+    },
+    name: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: true,
+    },
+    surname: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: true,
+    },
+    age: {
+        type: sequelize_1.DataTypes.INTEGER,
+        allowNull: true,
+    },
+    address: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: true,
+    },
+    email: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: true,
+        unique: true,
+    },
 }, {
     timestamps: false,
     tableName: "users",

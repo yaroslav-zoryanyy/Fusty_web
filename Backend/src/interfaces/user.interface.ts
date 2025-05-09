@@ -1,13 +1,23 @@
 export interface IUser {
-  _id?: number;
+  id: number;
   password: string;
   phone: string;
   name?: string;
   surname?: string;
   address?: string;
-  login?: string;
-  access_token?: string;
-  refresh_token?: string;
+  email?: string;
+  age?: number;
 }
 
-export type IUserDto = Pick<IUser,"name" | "surname" | "password" | "address" | "login" | "access_token" | "refresh_token">;
+export interface IUserCreateDto {
+  name?: string;
+  email?: string;
+  age?: number;
+  surname?: string;
+  address?: string;
+  phone: string;
+  password: string;
+}
+export type IUserDto = Pick<IUser, "name" | "surname" | "password" | "address">;
+
+export type IUserUpdateDto = Pick<IUser, "name" | "age" | "phone">;

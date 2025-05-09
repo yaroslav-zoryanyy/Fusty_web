@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="222d9715-e5c6-48a6-994c-0779c93374cf" name="Changes" comment="fix config .ts and refactor sequalize model">
+      <change afterPath="$PROJECT_DIR$/Backend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/configs/config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/constants/regex.constant.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/controllers/auth.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/interfaces/token.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/middleware/auth.middleware.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/middleware/common.middleware.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/middleware/error.middleware.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/repositories/token.repository.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/routers/auth.router.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/schemas/token.schema.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/schemas/user.schema.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/services/auth.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/services/password.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/services/token.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/validators/user.validator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/controllers/user.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/db/Users.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/db/Users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/db/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/db/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/errors/api-error.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/errors/api-error.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/models/models.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/repositories/user.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/repositories/user.repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/routers/user.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routers/user.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/services/user.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/services/user.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/controllers/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/controllers/user.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/db/Users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/db/Users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/db/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/db/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/errors/api-error.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/errors/api-error.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/interfaces/user.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/interfaces/user.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/models/models.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/repositories/user.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/repositories/user.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/routers/user.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/routers/user.router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/services/user.service.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="c622b69b78f22f0e485b905bb766c17c67c1321c" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;yaroslav-zoryanyy&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/yaroslav-zoryanyy/Fusty_web.git&quot;,
+    &quot;accountId&quot;: &quot;27ed5e52-2892-41c4-9947-35b74e364842&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2srkC7MjHzalliRKYjdgibU4v0A" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.prepare.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start:dev.executor&quot;: &quot;Run&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/yaroslav/WebstormProjects/Fusty(web)/Backend/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Backend/src/db" />
+      <recent name="$PROJECT_DIR$/Backend/src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.start:dev">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/Backend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="prepare" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/Backend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="prepare" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/Backend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start:dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/Backend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start:dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start:dev" />
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.prepare" />
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.157" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="222d9715-e5c6-48a6-994c-0779c93374cf" name="Changes" comment="" />
+      <created>1739220950889</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1739220950889</updated>
+      <workItem from="1739220951960" duration="8078000" />
+      <workItem from="1739374317024" duration="13911000" />
+      <workItem from="1739983571920" duration="4497000" />
+      <workItem from="1740166274894" duration="2749000" />
+      <workItem from="1741710617520" duration="1160000" />
+      <workItem from="1741711789921" duration="17000" />
+      <workItem from="1741711809978" duration="221000" />
+      <workItem from="1741712285313" duration="5202000" />
+      <workItem from="1741720060058" duration="3791000" />
+      <workItem from="1741724007359" duration="756000" />
+      <workItem from="1741791967168" duration="7988000" />
+      <workItem from="1741887234332" duration="13110000" />
+      <workItem from="1741975897435" duration="8176000" />
+      <workItem from="1742982019829" duration="26000" />
+      <workItem from="1742982173323" duration="60000" />
+      <workItem from="1746123280139" duration="16533000" />
+      <workItem from="1746140639402" duration="91000" />
+      <workItem from="1746541965875" duration="10514000" />
+      <workItem from="1746556269599" duration="5171000" />
+      <workItem from="1746624520561" duration="1129000" />
+      <workItem from="1746626337186" duration="14500000" />
+      <workItem from="1746707455664" duration="13340000" />
+      <workItem from="1746801461617" duration="7902000" />
+      <workItem from="1746812534482" duration="11690000" />
+    </task>
+    <task id="LOCAL-00001" summary="init project">
+      <option name="closed" value="true" />
+      <created>1739229060039</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1739229060039</updated>
+    </task>
+    <task id="LOCAL-00002" summary="The primary base of the data and the relationship between it">
+      <option name="closed" value="true" />
+      <created>1740168940799</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1740168940799</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Create get, post, put, delete methods for Services">
+      <option name="closed" value="true" />
+      <created>1741983753315</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1741983753315</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Create get, post, put, delete methods for User and  delete old code Services">
+      <option name="closed" value="true" />
+      <created>1746140542511</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1746140542511</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix config .ts and refactor sequalize model">
+      <option name="closed" value="true" />
+      <created>1746555678012</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746555678012</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init project" />
+    <MESSAGE value="The primary base of the data and the relationship between it" />
+    <MESSAGE value="Create get, post, put, delete methods for Services" />
+    <MESSAGE value="Create get, post, put, delete methods for User and  delete old code Services" />
+    <MESSAGE value="fix config .ts and refactor sequalize model" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix config .ts and refactor sequalize model" />
+  </component>
+</project>

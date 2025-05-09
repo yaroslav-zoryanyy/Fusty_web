@@ -1,8 +1,9 @@
-export class ApiError extends Error {
-  status: number;
+export default class ApiError extends Error {
+  statusCode: number;
 
-  constructor(message: string, status: number) {
+  constructor(message: string, statusCode: number) {
     super(message);
-    this.status = status;
+    this.statusCode = statusCode;
+    Error.captureStackTrace(this, this.constructor);
   }
 }

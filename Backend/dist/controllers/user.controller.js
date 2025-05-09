@@ -12,20 +12,10 @@ class UserController {
             next(e);
         }
     }
-    async createUser(req, res, next) {
-        try {
-            const dto = req.body;
-            const result = await user_service_1.userService.createUser(dto);
-            res.status(201).json(result);
-        }
-        catch (e) {
-            next(e);
-        }
-    }
     async getUserById(req, res, next) {
         try {
-            const { id } = req.params;
-            const result = await user_service_1.userService.getUserById(id);
+            const { userId } = req.params;
+            const result = await user_service_1.userService.getUserById(userId);
             res.status(200).json(result);
         }
         catch (e) {
@@ -34,9 +24,9 @@ class UserController {
     }
     async updateUser(req, res, next) {
         try {
-            const id = req.params.id;
+            const { userId } = req.params;
             const dto = req.body;
-            const result = await user_service_1.userService.updateUser(id, dto);
+            const result = await user_service_1.userService.updateUser(userId, dto);
             res.status(201).json(result);
         }
         catch (e) {
@@ -45,8 +35,8 @@ class UserController {
     }
     async deleteUser(req, res, next) {
         try {
-            const id = req.params.id;
-            await user_service_1.userService.deleteUser(id);
+            const { userId } = req.params;
+            await user_service_1.userService.deleteUser(userId);
             res.sendStatus(204);
         }
         catch (e) {
