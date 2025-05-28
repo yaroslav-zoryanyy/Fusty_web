@@ -7,10 +7,6 @@ class UserService {
     return await userRepository.getAllUsers();
   }
 
-  // public async createUser(dto: Partial<any>): Promise<IUser> {
-  //   return await userRepository.createUser(dto);
-  // }
-
   public async getUserById(userId: string): Promise<IUser> {
     const services = await userRepository.getUserById(userId);
     if (!services) {

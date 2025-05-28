@@ -21,6 +21,7 @@ const Token = sequelize.define(
     _userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      unique: true,
     },
   },
   {

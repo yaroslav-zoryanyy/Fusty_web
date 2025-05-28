@@ -19,3 +19,4 @@ export interface IUserCreateDto {
   password: string;
 }
 export type IUserDto = Pick<IUser, "name" | "surname" | "password" | "address">;
+export type ILogin = Pick<IUser, "phone" | "password">;

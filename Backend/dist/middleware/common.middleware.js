@@ -50,6 +50,24 @@ class CommonMiddleware {
             }
         };
     }
+    checkPhoneNotExists() {
+        return async (req, res, next) => {
+            try {
+                const { phone } = req.body;
+                if (!phone) {
+                    return next(new api_error_1.default("Phone number is required", 400));
+                }
+                const existingUser = await Users_1.default.findOne({ where: { phone } });
+                if (!existingUser) {
+                    return next(new api_error_1.default("The user with this phone number does not exist", 404));
+                }
+                next();
+            }
+            catch (error) {
+                next(error);
+            }
+        };
+    }
     validateUpdateUser(schema) {
         return (req, res, next) => {
             const { error } = schema.validate(req.body, { abortEarly: false });

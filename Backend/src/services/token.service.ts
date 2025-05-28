@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import * as jwt from "jsonwebtoken";
 
 import { config } from "../configs/config";
-// import ApiError from "../errors/api-error";
+import ApiError from "../errors/api-error";
 import { ITokenPair, ITokenPayload } from "../interfaces/token.interface";
 
 dotenv.config();
@@ -21,26 +21,24 @@ class TokenService {
       refreshToken,
     };
   }
-  // public verifyToken(token: string, type: "access" | "refresh"): ITokenPayload {
-  //   try {
-  //     let secret: string;
-  //
-  //     switch (type) {
-  //       case "access":
-  //         secret = config.jwtAccessSecret;
-  //         break;
-  //       case "refresh":
-  //         secret = config.jwtRefreshSecret;
-  //         break;
-  //       default:
-  //         throw new ApiError("Invalid token type", 401);
-  //     }
-  //
-  //     return jwt.verify(token, secret) as ITokenPayload;
-  //   } catch (e) {
-  //     throw new ApiError("Invalid token", 401);
-  //   }
-  // }
+
+  public verifyToken(token: string, type: "access" | "refresh"): ITokenPayload {
+    try {
+      let secret: string;
+
+      if (type === "access") {
+        secret = config.jwtAccessSecret;
+      } else if (type === "refresh") {
+        secret = config.jwtRefreshSecret;
+      } else {
+        throw new ApiError("Invalid token type", 401);
+      }
+
+      return jwt.verify(token, secret) as ITokenPayload;
+    } catch (e) {
+      throw new ApiError(e, 401);
+    }
+  }
 }
 
 export const tokenService = new TokenService();

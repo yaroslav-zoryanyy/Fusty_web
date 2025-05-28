@@ -31,9 +31,14 @@ export class UserValidator {
     phone: this.phone.required(),
   });
 
-  public static update = joi.object({
-    name: this.userName,
-    age: this.age,
-    phone: this.phone,
+  // public static update = joi.object({
+  //   name: this.userName,
+  //   age: this.age,
+  //   phone: this.phone,
+  // });
+
+  public static login = joi.object({
+    phone: this.phone.required(),
+    password: this.password.required(),
   });
 }

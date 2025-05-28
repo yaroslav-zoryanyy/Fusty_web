@@ -40,6 +40,7 @@ exports.tokenService = void 0;
 const dotenv_1 = __importDefault(require("dotenv"));
 const jwt = __importStar(require("jsonwebtoken"));
 const config_1 = require("../configs/config");
+const api_error_1 = __importDefault(require("../errors/api-error"));
 dotenv_1.default.config();
 class TokenService {
     generateTokens(payload) {
@@ -53,6 +54,24 @@ class TokenService {
             accessToken,
             refreshToken,
         };
+    }
+    verifyToken(token, type) {
+        try {
+            let secret;
+            if (type === "access") {
+                secret = config_1.config.jwtAccessSecret;
+            }
+            else if (type === "refresh") {
+                secret = config_1.config.jwtRefreshSecret;
+            }
+            else {
+                throw new api_error_1.default("Invalid token type", 401);
+            }
+            return jwt.verify(token, secret);
+        }
+        catch (e) {
+            throw new api_error_1.default(e, 401);
+        }
     }
 }
 exports.tokenService = new TokenService();

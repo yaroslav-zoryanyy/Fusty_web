@@ -15,6 +15,14 @@ class TokenRepository {
     const token = await Token.findOne({ where: params });
     return token?.get({ plain: true }) as IToken;
   }
+
+  public async deleteOneByParams(params: Partial<IToken>): Promise<void> {
+    await Token.destroy({ where: params });
+  }
+
+  public async deleteAllByParams(params: Partial<IToken>): Promise<void> {
+    await Token.destroy({ where: params });
+  }
 }
 
 export const tokenRepository = new TokenRepository();

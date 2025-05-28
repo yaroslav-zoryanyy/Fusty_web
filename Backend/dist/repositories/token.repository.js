@@ -18,5 +18,11 @@ class TokenRepository {
         const token = await Tokens_1.default.findOne({ where: params });
         return token?.get({ plain: true });
     }
+    async deleteOneByParams(params) {
+        await Tokens_1.default.destroy({ where: params });
+    }
+    async deleteAllByParams(params) {
+        await Tokens_1.default.destroy({ where: params });
+    }
 }
 exports.tokenRepository = new TokenRepository();

@@ -37,8 +37,7 @@ UserValidator.create = joi_1.default.object({
     password: _a.password.required(),
     phone: _a.phone.required(),
 });
-UserValidator.update = joi_1.default.object({
-    name: _a.userName,
-    age: _a.age,
-    phone: _a.phone,
+UserValidator.login = joi_1.default.object({
+    phone: _a.phone.required(),
+    password: _a.password.required(),
 });

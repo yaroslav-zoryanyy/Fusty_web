@@ -32,6 +32,7 @@ class CommonMiddleware {
       next();
     };
   }
+
   public checkPhoneExists() {
     return async (req: Request, res: Response, next: NextFunction) => {
       try {
@@ -46,6 +47,30 @@ class CommonMiddleware {
         if (existingUser) {
           return next(
             new ApiError("User with this phone number already exists", 409),
+          );
+        }
+
+        next();
+      } catch (error) {
+        next(error);
+      }
+    };
+  }
+
+  public checkPhoneNotExists() {
+    return async (req: Request, res: Response, next: NextFunction) => {
+      try {
+        const { phone } = req.body;
+
+        if (!phone) {
+          return next(new ApiError("Phone number is required", 400));
+        }
+
+        const existingUser = await users.findOne({ where: { phone } });
+
+        if (!existingUser) {
+          return next(
+            new ApiError("The user with this phone number does not exist", 404),
           );
         }
 

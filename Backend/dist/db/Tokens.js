@@ -22,6 +22,7 @@ const Token = main_1.default.define("tokens", {
     _userId: {
         type: sequelize_1.DataTypes.INTEGER,
         allowNull: false,
+        unique: true,
     },
 }, {
     timestamps: false,
