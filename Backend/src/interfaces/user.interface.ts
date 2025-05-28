@@ -19,5 +19,3 @@ export interface IUserCreateDto {
   password: string;
 }
 export type IUserDto = Pick<IUser, "name" | "surname" | "password" | "address">;
-
-export type IUserUpdateDto = Pick<IUser, "name" | "age" | "phone">;

@@ -9,11 +9,7 @@ class UserRepository {
 
   public async createUser(dto: IUserCreateDto): Promise<IUser> {
     const newUser = await users.create({
-      name: dto.name,
       email: dto.email,
-      age: dto.age,
-      surname: dto.surname,
-      address: dto.address,
       phone: dto.phone,
       password: dto.password,
     });

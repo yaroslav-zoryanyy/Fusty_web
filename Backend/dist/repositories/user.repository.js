@@ -12,11 +12,7 @@ class UserRepository {
     }
     async createUser(dto) {
         const newUser = await Users_1.default.create({
-            name: dto.name,
             email: dto.email,
-            age: dto.age,
-            surname: dto.surname,
-            address: dto.address,
             phone: dto.phone,
             password: dto.password,
         });

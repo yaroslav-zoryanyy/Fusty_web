@@ -1,18 +1,20 @@
+import dotenv from "dotenv";
 import * as jwt from "jsonwebtoken";
 
 import { config } from "../configs/config";
 // import ApiError from "../errors/api-error";
 import { ITokenPair, ITokenPayload } from "../interfaces/token.interface";
 
-//Потрібно вирішити проблему із config.jwtAccess......
+dotenv.config();
+
 class TokenService {
   public generateTokens(payload: ITokenPayload): ITokenPair {
     const accessToken = jwt.sign(payload, config.jwtAccessSecret, {
-      expiresIn: "30m",
+      expiresIn: +config.jwtAccessExpiresIn * 60,
     });
 
     const refreshToken = jwt.sign(payload, config.jwtRefreshSecret, {
-      expiresIn: "60m",
+      expiresIn: +config.jwtRefreshExpiresIn * 60,
     });
     return {
       accessToken,

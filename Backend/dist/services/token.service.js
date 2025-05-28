@@ -32,17 +32,22 @@ var __importStar = (this && this.__importStar) || (function () {
         return result;
     };
 })();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.tokenService = void 0;
+const dotenv_1 = __importDefault(require("dotenv"));
 const jwt = __importStar(require("jsonwebtoken"));
 const config_1 = require("../configs/config");
+dotenv_1.default.config();
 class TokenService {
     generateTokens(payload) {
         const accessToken = jwt.sign(payload, config_1.config.jwtAccessSecret, {
-            expiresIn: "30m",
+            expiresIn: +config_1.config.jwtAccessExpiresIn * 60,
         });
         const refreshToken = jwt.sign(payload, config_1.config.jwtRefreshSecret, {
-            expiresIn: "60m",
+            expiresIn: +config_1.config.jwtRefreshExpiresIn * 60,
         });
         return {
             accessToken,
