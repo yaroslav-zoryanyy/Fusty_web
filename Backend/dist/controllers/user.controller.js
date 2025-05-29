@@ -12,32 +12,42 @@ class UserController {
             next(e);
         }
     }
-    async getUserById(req, res, next) {
+    async getMe(req, res, next) {
         try {
-            const { userId } = req.params;
-            const result = await user_service_1.userService.getUserById(userId);
+            const tokenPayload = req.res.locals.tokenPayload;
+            const result = await user_service_1.userService.getMe(tokenPayload);
             res.status(200).json(result);
         }
         catch (e) {
             next(e);
         }
     }
-    async updateUser(req, res, next) {
+    async updateMe(req, res, next) {
         try {
-            const { userId } = req.params;
+            const tokenPayload = req.res.locals.tokenPayload;
             const dto = req.body;
-            const result = await user_service_1.userService.updateUser(userId, dto);
+            const result = await user_service_1.userService.updateMe(tokenPayload, dto);
             res.status(201).json(result);
         }
         catch (e) {
             next(e);
         }
     }
-    async deleteUser(req, res, next) {
+    async deleteMe(req, res, next) {
         try {
-            const { userId } = req.params;
-            await user_service_1.userService.deleteUser(userId);
+            const tokenPayload = req.res.locals.tokenPayload;
+            await user_service_1.userService.deleteMe(tokenPayload);
             res.sendStatus(204);
+        }
+        catch (e) {
+            next(e);
+        }
+    }
+    async getUserById(req, res, next) {
+        try {
+            const userId = req.params.userId;
+            const result = await user_service_1.userService.getUserById(+userId);
+            res.status(200).json(result);
         }
         catch (e) {
             next(e);

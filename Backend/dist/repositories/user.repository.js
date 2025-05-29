@@ -10,6 +10,10 @@ class UserRepository {
         const all_users_raw = await Users_1.default.findAll();
         return all_users_raw.map((user) => user.get({ plain: true }));
     }
+    async getUserById(userId) {
+        const user = await Users_1.default.findByPk(userId);
+        return user ? user.get({ plain: true }) : null;
+    }
     async createUser(dto) {
         const newUser = await Users_1.default.create({
             email: dto.email,
@@ -18,21 +22,27 @@ class UserRepository {
         });
         return newUser.get({ plain: true });
     }
-    async getUserById(userId) {
-        const user = await Users_1.default.findByPk(userId);
-        return user ? user.get({ plain: true }) : null;
+    async updateById(id, dto) {
+        await Users_1.default.update(dto, { where: { id } });
+        const updatedUser = await Users_1.default.findByPk(id);
+        return updatedUser?.get({ plain: true });
     }
-    async updateUserById(id, dto) {
-        return await Users_1.default.update(dto, { where: { id } });
-    }
-    async deleteUserById(id) {
+    async deleteById(id) {
         await Users_1.default.destroy({ where: { id } });
     }
     async getByEmail(email) {
-        return await Users_1.default.findOne({ where: { email }, raw: true });
+        const user = await Users_1.default.findOne({
+            where: { email },
+            raw: true,
+        });
+        return user ? user.get({ plain: true }) : null;
     }
     async getByPhone(phone) {
-        return await Users_1.default.findOne({ where: { phone }, raw: true });
+        const user = await Users_1.default.findOne({
+            where: { phone },
+            raw: true,
+        });
+        return user ? user.get({ plain: true }) : null;
     }
 }
 exports.userRepository = new UserRepository();

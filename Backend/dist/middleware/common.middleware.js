@@ -72,7 +72,9 @@ class CommonMiddleware {
         return (req, res, next) => {
             const { error } = schema.validate(req.body, { abortEarly: false });
             if (error) {
-                const message = error.details.map((e) => e.message).join(", ");
+                const message = error.details
+                    .map((e) => e.message)
+                    .join(", ");
                 return next(new api_error_1.default(message, 400));
             }
             next();

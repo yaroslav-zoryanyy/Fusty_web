@@ -1,37 +1,39 @@
-import Joi from "joi";
-// оптимізувати user.validator
-export const createUserSchema = Joi.object({
-  phone: Joi.string()
-    .pattern(/^(\+380|380|0)\d{9}$/)
-    .min(10)
-    .max(13)
-    .required()
-    .messages({
-      "string.base": "Phone must be a string",
-      "string.empty": "Phone is required",
-      "string.pattern.base":
-        "Phone must be in format +380XXXXXXXXX, 380XXXXXXXXX or 0XXXXXXXXX",
-      "string.min": "Phone must be at least 10 digits",
-      "string.max": "Phone must be at most 13 digits",
-      "any.required": "Phone is required",
-    }),
-  // pattent .max() not working
-  password: Joi.string()
-    .pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%_*#?&])[A-Za-z\d@$_!%*#?&]{8,}$/)
-    .min(8)
-    .max(16)
-    .required()
-    .messages({
-      "string.base": "Password must be a string",
-      "string.pattern.base": "Password must be a number",
-      "string.empty": "Password is required",
-      "string.min": "Password must be at least 8 characters",
-      "string.max": "Phone must be at most 16 digits",
-      "any.required": "Password is required",
-    }),
-});
+import Joi, { ObjectSchema } from "joi";
 
-export const updateUserSchema = Joi.object({
+import { IUserUpdateDto } from "../interfaces/user.interface";
+// оптимізувати user.validator
+// export const createUserSchema = Joi.object({
+//   phone: Joi.string()
+//     .pattern(/^(\+380|380|0)\d{9}$/)
+//     .min(10)
+//     .max(13)
+//     .required()
+//     .messages({
+//       "string.base": "Phone must be a string",
+//       "string.empty": "Phone is required",
+//       "string.pattern.base":
+//         "Phone must be in format +380XXXXXXXXX, 380XXXXXXXXX or 0XXXXXXXXX",
+//       "string.min": "Phone must be at least 10 digits",
+//       "string.max": "Phone must be at most 13 digits",
+//       "any.required": "Phone is required",
+//     }),
+//   // pattent .max() not working
+//   password: Joi.string()
+//     .pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%_*#?&])[A-Za-z\d@$_!%*#?&]{8,}$/)
+//     .min(8)
+//     .max(16)
+//     .required()
+//     .messages({
+//       "string.base": "Password must be a string",
+//       "string.pattern.base": "Password must be a number",
+//       "string.empty": "Password is required",
+//       "string.min": "Password must be at least 8 characters",
+//       "string.max": "Phone must be at most 16 digits",
+//       "any.required": "Password is required",
+//     }),
+// });
+
+export const updateUserSchema: ObjectSchema<IUserUpdateDto> = Joi.object({
   name: Joi.string()
     .min(3)
     .max(50)
@@ -75,7 +77,7 @@ export const updateUserSchema = Joi.object({
       "string.max": "Email must be at most 100 characters long",
     }),
 
-  age: Joi.number().integer().min(14).max(100).required().messages({
+  age: Joi.number().integer().min(14).max(100).messages({
     "number.base": "Age must be a number",
     "number.integer": "Age must be an integer",
     "number.min": "Age must be at least {#limit}",

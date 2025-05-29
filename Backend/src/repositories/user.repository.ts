@@ -1,14 +1,27 @@
+import { Model } from "sequelize";
+
 import users from "../db/Users";
-import { IUser, IUserCreateDto, IUserDto } from "../interfaces/user.interface";
+import {
+  IUser,
+  IUserCreateDto,
+  IUserUpdateDto,
+} from "../interfaces/user.interface";
 
 class UserRepository {
   public async getAllUsers(): Promise<IUser[]> {
-    const all_users_raw = await users.findAll();
-    return all_users_raw.map((user) => user.get({ plain: true }));
+    const all_users_raw: Model<any, IUser>[] = await users.findAll();
+    return all_users_raw.map(
+      (user: Model<any, IUser>): IUser => user.get({ plain: true }),
+    );
+  }
+
+  public async getUserById(userId: number): Promise<IUser | null> {
+    const user: Model<any, IUser> = await users.findByPk(userId);
+    return user ? (user.get({ plain: true }) as IUser) : null;
   }
 
   public async createUser(dto: IUserCreateDto): Promise<IUser> {
-    const newUser = await users.create({
+    const newUser: Model<any, IUser> = await users.create({
       email: dto.email,
       phone: dto.phone,
       password: dto.password,
@@ -16,31 +29,30 @@ class UserRepository {
     return newUser.get({ plain: true }) as IUser;
   }
 
-  public async getUserById(userId: string): Promise<IUser | null> {
-    const user = await users.findByPk(userId);
-    return user ? (user.get({ plain: true }) as IUser) : null;
+  public async updateById(id: number, dto: IUserUpdateDto): Promise<IUser> {
+    await users.update(dto, { where: { id } });
+    const updatedUser: Model<any, IUser> = await users.findByPk(id);
+    return updatedUser?.get({ plain: true }) as IUser;
   }
 
-  //тут ми не використовуємо userId, так як звертаємось до бд
-
-  public async updateUserById(id: string, dto: IUserDto): Promise<any> {
-    return await users.update(dto, { where: { id } });
-  }
-
-  public async deleteUserById(id: string): Promise<void> {
+  public async deleteById(id: number): Promise<void> {
     await users.destroy({ where: { id } });
   }
 
-  // поправити проміс
-
-  public async getByEmail(email: string): Promise<any> {
-    return await users.findOne({ where: { email }, raw: true });
+  public async getByEmail(email: string): Promise<IUser | null> {
+    const user: Model<any, IUser> = await users.findOne({
+      where: { email },
+      raw: true,
+    });
+    return user ? (user.get({ plain: true }) as IUser) : null;
   }
 
-  // поправити проміс
-
-  public async getByPhone(phone: string): Promise<any> {
-    return await users.findOne({ where: { phone }, raw: true });
+  public async getByPhone(phone: string): Promise<IUser | null> {
+    const user: Model<any, IUser> = await users.findOne({
+      where: { phone },
+      raw: true,
+    });
+    return user ? (user.get({ plain: true }) as IUser) : null;
   }
 }
 

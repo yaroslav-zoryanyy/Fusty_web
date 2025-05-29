@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import Joi from "joi";
+import Joi, { ValidationErrorItem } from "joi";
 import { validate as isUUID } from "uuid";
 
 import users from "../db/Users";
@@ -81,12 +81,16 @@ class CommonMiddleware {
     };
   }
 
-  public validateUpdateUser(schema: Joi.ObjectSchema) {
-    return (req: Request, res: Response, next: NextFunction) => {
+  public validateUpdateUser(
+    schema: Joi.ObjectSchema,
+  ): (req: Request, res: Response, next: NextFunction) => void {
+    return (req: Request, res: Response, next: NextFunction): void => {
       const { error } = schema.validate(req.body, { abortEarly: false });
 
       if (error) {
-        const message = error.details.map((e) => e.message).join(", ");
+        const message: string = error.details
+          .map((e: ValidationErrorItem): string => e.message)
+          .join(", ");
         return next(new ApiError(message, 400));
       }
 

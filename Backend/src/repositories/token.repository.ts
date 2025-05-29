@@ -1,9 +1,11 @@
+import { Model } from "sequelize";
+
 import Token from "../db/Tokens";
 import { IToken } from "../interfaces/token.interface";
 
 class TokenRepository {
   public async create(dto: IToken): Promise<IToken> {
-    const token = await Token.create({
+    const token: Model<any, IToken> = await Token.create({
       accessToken: dto.accessToken,
       refreshToken: dto.refreshToken,
       _userId: dto._userId,
@@ -12,7 +14,7 @@ class TokenRepository {
   }
 
   public async findByParams(params: Partial<IToken>): Promise<IToken | null> {
-    const token = await Token.findOne({ where: params });
+    const token: Model<any, IToken> = await Token.findOne({ where: params });
     return token?.get({ plain: true }) as IToken;
   }
 

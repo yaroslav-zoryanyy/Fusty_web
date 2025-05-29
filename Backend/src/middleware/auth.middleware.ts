@@ -11,13 +11,13 @@ class AuthMiddleware {
     req: Request,
     res: Response,
     next: NextFunction,
-  ) {
+  ): Promise<void> {
     try {
-      const header = req.headers.authorization;
+      const header: string = req.headers.authorization;
       if (!header) {
         throw new ApiError("No token provided", 401);
       }
-      const accessToken = header.split("Bearer ")[1];
+      const accessToken: string = header.split("Bearer ")[1];
       if (!accessToken) {
         throw new ApiError("No token provided", 401);
       }
@@ -26,7 +26,7 @@ class AuthMiddleware {
         TokenTypeEnum.ACCESS,
       );
 
-      const pair = await tokenRepository.findByParams({ accessToken });
+      const pair: IToken = await tokenRepository.findByParams({ accessToken });
       if (!pair) {
         throw new ApiError("Invalid token", 401);
       }
@@ -41,7 +41,7 @@ class AuthMiddleware {
     req: Request,
     res: Response,
     next: NextFunction,
-  ) {
+  ): Promise<void> {
     try {
       const header: string = req.headers.authorization;
       if (!header) {

@@ -12,9 +12,9 @@ class AuthService {
     dto: IUserCreateDto,
   ): Promise<{ user: IUser; tokens: ITokenPair }> {
     await userService.isPhoneUnique(dto.phone);
-    const password = await passwordService.hashPassword(dto.password);
-    const user = await userRepository.createUser({ ...dto, password });
-    const tokens = tokenService.generateTokens({ userId: user.id });
+    const password: string = await passwordService.hashPassword(dto.password);
+    const user: IUser = await userRepository.createUser({ ...dto, password });
+    const tokens: ITokenPair = tokenService.generateTokens({ userId: user.id });
     await tokenRepository.create({ ...tokens, _userId: user.id });
     return { user, tokens };
   }

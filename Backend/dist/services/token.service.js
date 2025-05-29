@@ -67,7 +67,12 @@ class TokenService {
             else {
                 throw new api_error_1.default("Invalid token type", 401);
             }
-            return jwt.verify(token, secret);
+            try {
+                return jwt.verify(token, secret);
+            }
+            catch (e) {
+                console.log(e);
+            }
         }
         catch (e) {
             throw new api_error_1.default(e, 401);

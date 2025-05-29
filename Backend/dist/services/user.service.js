@@ -10,26 +10,26 @@ class UserService {
     async getAllUsers() {
         return await user_repository_1.userRepository.getAllUsers();
     }
-    async getUserById(userId) {
-        const services = await user_repository_1.userRepository.getUserById(userId);
-        if (!services) {
-            throw new api_error_1.default("User not found", 404);
-        }
-        return services;
-    }
-    async updateUser(userId, dto) {
-        const user = await user_repository_1.userRepository.getUserById(userId);
+    async getMe(tokenPayload) {
+        const user = await user_repository_1.userRepository.getUserById(tokenPayload.userId);
         if (!user) {
             throw new api_error_1.default("User not found", 404);
         }
-        return await user_repository_1.userRepository.updateUserById(userId, dto);
+        return user;
     }
-    async deleteUser(userId) {
-        const services = await user_repository_1.userRepository.getUserById(userId);
-        if (!services) {
+    async updateMe(tokenPayload, dto) {
+        const user = await user_repository_1.userRepository.getUserById(tokenPayload.userId);
+        if (!user) {
             throw new api_error_1.default("User not found", 404);
         }
-        await user_repository_1.userRepository.deleteUserById(userId);
+        return await user_repository_1.userRepository.updateById(user.id, dto);
+    }
+    async deleteMe(tokenPayload) {
+        const user = await user_repository_1.userRepository.getUserById(tokenPayload.userId);
+        if (!user) {
+            throw new api_error_1.default("User not found", 404);
+        }
+        await user_repository_1.userRepository.deleteById(tokenPayload.userId);
     }
     async isEmailUnique(email) {
         const user = await user_repository_1.userRepository.getByEmail(email);
@@ -42,6 +42,13 @@ class UserService {
         if (user) {
             throw new api_error_1.default("Phone is already in use", 409);
         }
+    }
+    async getUserById(userId) {
+        const user = await user_repository_1.userRepository.getUserById(userId);
+        if (!user) {
+            throw new api_error_1.default("User not found", 404);
+        }
+        return user;
     }
 }
 exports.userService = new UserService();

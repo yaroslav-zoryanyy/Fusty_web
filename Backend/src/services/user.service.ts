@@ -1,5 +1,6 @@
 import ApiError from "../errors/api-error";
-import { IUser, IUserDto } from "../interfaces/user.interface";
+import { ITokenPayload } from "../interfaces/token.interface";
+import { IUser, IUserUpdateDto } from "../interfaces/user.interface";
 import { userRepository } from "../repositories/user.repository";
 
 class UserService {
@@ -7,44 +8,53 @@ class UserService {
     return await userRepository.getAllUsers();
   }
 
-  public async getUserById(userId: string): Promise<IUser> {
-    const services = await userRepository.getUserById(userId);
-    if (!services) {
-      throw new ApiError("User not found", 404);
-    }
-    return services;
-  }
-
-  public async updateUser(userId: string, dto: IUserDto): Promise<IUser> {
-    const user = await userRepository.getUserById(userId);
+  public async getMe(tokenPayload: ITokenPayload): Promise<IUser> {
+    const user: IUser = await userRepository.getUserById(tokenPayload.userId);
     if (!user) {
       throw new ApiError("User not found", 404);
     }
-    return await userRepository.updateUserById(userId, dto);
+    return user;
   }
 
-  public async deleteUser(userId: string): Promise<void> {
-    const services = await userRepository.getUserById(userId);
-    if (!services) {
+  public async updateMe(
+    tokenPayload: ITokenPayload,
+    dto: IUserUpdateDto,
+  ): Promise<IUser> {
+    const user: IUser = await userRepository.getUserById(tokenPayload.userId);
+    if (!user) {
       throw new ApiError("User not found", 404);
     }
-    await userRepository.deleteUserById(userId);
+    return await userRepository.updateById(user.id, dto);
   }
 
-  // нещодавно добавив, потрібно перевірити чи працює коректно
+  public async deleteMe(tokenPayload: ITokenPayload): Promise<void> {
+    const user: IUser = await userRepository.getUserById(tokenPayload.userId);
+    if (!user) {
+      throw new ApiError("User not found", 404);
+    }
+    await userRepository.deleteById(tokenPayload.userId);
+  }
 
   public async isEmailUnique(email: string): Promise<void> {
-    const user = await userRepository.getByEmail(email);
+    const user: IUser = await userRepository.getByEmail(email);
     if (user) {
       throw new ApiError("Email is already in use", 409);
     }
   }
 
   public async isPhoneUnique(phone: string): Promise<void> {
-    const user = await userRepository.getByPhone(phone);
+    const user: IUser = await userRepository.getByPhone(phone);
     if (user) {
       throw new ApiError("Phone is already in use", 409);
     }
+  }
+
+  public async getUserById(userId: number): Promise<IUser> {
+    const user: IUser = await userRepository.getUserById(userId);
+    if (!user) {
+      throw new ApiError("User not found", 404);
+    }
+    return user;
   }
 }
 

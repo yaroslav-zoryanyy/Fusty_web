@@ -25,7 +25,6 @@ class TokenService {
   public verifyToken(token: string, type: "access" | "refresh"): ITokenPayload {
     try {
       let secret: string;
-
       if (type === "access") {
         secret = config.jwtAccessSecret;
       } else if (type === "refresh") {
@@ -33,8 +32,11 @@ class TokenService {
       } else {
         throw new ApiError("Invalid token type", 401);
       }
-
-      return jwt.verify(token, secret) as ITokenPayload;
+      try {
+        return jwt.verify(token, secret) as ITokenPayload;
+      } catch (e) {
+        console.log(e);
+      }
     } catch (e) {
       throw new ApiError(e, 401);
     }

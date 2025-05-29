@@ -4,32 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="222d9715-e5c6-48a6-994c-0779c93374cf" name="Changes" comment="&#10;Refactor Auth( save token in db )">
-      <change afterPath="$PROJECT_DIR$/Backend/src/enums/token-type.enum.ts" afterDir="false" />
+    <list default="true" id="222d9715-e5c6-48a6-994c-0779c93374cf" name="Changes" comment="update tokens(refresh) + install enums">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/controllers/auth.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/db/Tokens.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/db/Tokens.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/middleware/auth.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/middleware/auth.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/controllers/user.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/dist/middleware/common.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/middleware/common.middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/repositories/token.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/repositories/token.repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routers/auth.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routers/auth.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/services/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/services/auth.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/repositories/user.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/repositories/user.repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/routers/user.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routers/user.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/schemas/user.schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/schemas/user.schema.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/dist/services/token.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/services/token.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/validators/user.validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/validators/user.validator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/services/user.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/services/user.service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/controllers/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/controllers/auth.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/db/Tokens.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/db/Tokens.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/interfaces/token.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/interfaces/token.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/controllers/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/controllers/user.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/interfaces/user.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/interfaces/user.interface.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/middleware/auth.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/middleware/auth.middleware.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/middleware/common.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/middleware/common.middleware.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/repositories/token.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/repositories/token.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/routers/auth.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/routers/auth.router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/repositories/user.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/repositories/user.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/routers/user.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/routers/user.router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/schemas/user.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/schemas/user.schema.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/services/auth.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/services/token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/services/token.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/services/user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/validators/user.validator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/validators/user.validator.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +194,8 @@
       <workItem from="1748333589235" duration="4174000" />
       <workItem from="1748338756827" duration="3386000" />
       <workItem from="1748437173911" duration="823000" />
-      <workItem from="1748438360693" duration="12996000" />
+      <workItem from="1748438360693" duration="19209000" />
+      <workItem from="1748502821645" duration="6283000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <option name="closed" value="true" />
@@ -257,7 +253,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748442752534</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update tokens(refresh) + install enums">
+      <option name="closed" value="true" />
+      <created>1748454449707</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1748454449707</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,6 +286,7 @@
     <MESSAGE value="fix config .ts and refactor sequalize model" />
     <MESSAGE value="&#10;Auth(have bag) + CRUD Methods + DB Refactor + Middleware" />
     <MESSAGE value="&#10;Refactor Auth( save token in db )" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;Refactor Auth( save token in db )" />
+    <MESSAGE value="update tokens(refresh) + install enums" />
+    <option name="LAST_COMMIT_MESSAGE" value="update tokens(refresh) + install enums" />
   </component>
 </project>

@@ -18,5 +18,13 @@ export interface IUserCreateDto {
   phone: string;
   password: string;
 }
+
+export interface IUserUpdateDto {
+  name?: string;
+  surname?: string;
+  address?: string;
+  email?: string;
+  age?: number;
+}
 export type IUserDto = Pick<IUser, "name" | "surname" | "password" | "address">;
 export type ILogin = Pick<IUser, "phone" | "password">;
