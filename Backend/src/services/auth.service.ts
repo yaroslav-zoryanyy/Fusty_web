@@ -1,11 +1,11 @@
-import { config } from "../configs/config";
-import { EmailTypeEnum } from "../enums/email-type.enum";
+// import { config } from "../configs/config";
+// import { EmailTypeEnum } from "../enums/email-type.enum";
 import ApiError from "../errors/api-error";
 import { ITokenPair, ITokenPayload } from "../interfaces/token.interface";
 import { ILogin, IUser, IUserCreateDto } from "../interfaces/user.interface";
 import { tokenRepository } from "../repositories/token.repository";
 import { userRepository } from "../repositories/user.repository";
-import { emailService } from "./email.service";
+// import { emailService } from "./email.service";
 import { passwordService } from "./password.service";
 import { tokenService } from "./token.service";
 import { userService } from "./user.service";
@@ -19,10 +19,12 @@ class AuthService {
     const user: IUser = await userRepository.createUser({ ...dto, password });
     const tokens: ITokenPair = tokenService.generateTokens({ userId: user.id });
     await tokenRepository.create({ ...tokens, _userId: user.id });
-    await emailService.sendEmail(EmailTypeEnum.WELCOME, "емейл", {
-      name: user.name,
-      frontUrl: config.frontUrl,
-    });
+
+    //fix of
+    // await emailService.sendEmail(EmailTypeEnum.WELCOME, "nemobroun@gmail.com", {
+    //   name: user.name,
+    //   frontUrl: config.frontUrl,
+    // });
     return { user, tokens };
   }
 

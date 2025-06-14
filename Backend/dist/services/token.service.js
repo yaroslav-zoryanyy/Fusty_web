@@ -56,26 +56,21 @@ class TokenService {
         };
     }
     verifyToken(token, type) {
+        let secret;
+        if (type === "access") {
+            secret = config_1.config.jwtAccessSecret;
+        }
+        else if (type === "refresh") {
+            secret = config_1.config.jwtRefreshSecret;
+        }
+        else {
+            throw new api_error_1.default("Invalid token type", 401);
+        }
         try {
-            let secret;
-            if (type === "access") {
-                secret = config_1.config.jwtAccessSecret;
-            }
-            else if (type === "refresh") {
-                secret = config_1.config.jwtRefreshSecret;
-            }
-            else {
-                throw new api_error_1.default("Invalid token type", 401);
-            }
-            try {
-                return jwt.verify(token, secret);
-            }
-            catch (e) {
-                console.log(e);
-            }
+            return jwt.verify(token, secret);
         }
         catch (e) {
-            throw new api_error_1.default(e, 401);
+            throw new api_error_1.default("Invalid or expired token", 401);
         }
     }
 }

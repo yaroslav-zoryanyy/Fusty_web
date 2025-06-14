@@ -1,37 +1,8 @@
 import Joi, { ObjectSchema } from "joi";
 
+import { OrderEnum } from "../enums/order.enum";
+import { UserListOrderEnum } from "../enums/user-list-order.enum";
 import { IUserUpdateDto } from "../interfaces/user.interface";
-// оптимізувати user.validator
-// export const createUserSchema = Joi.object({
-//   phone: Joi.string()
-//     .pattern(/^(\+380|380|0)\d{9}$/)
-//     .min(10)
-//     .max(13)
-//     .required()
-//     .messages({
-//       "string.base": "Phone must be a string",
-//       "string.empty": "Phone is required",
-//       "string.pattern.base":
-//         "Phone must be in format +380XXXXXXXXX, 380XXXXXXXXX or 0XXXXXXXXX",
-//       "string.min": "Phone must be at least 10 digits",
-//       "string.max": "Phone must be at most 13 digits",
-//       "any.required": "Phone is required",
-//     }),
-//   // pattent .max() not working
-//   password: Joi.string()
-//     .pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%_*#?&])[A-Za-z\d@$_!%*#?&]{8,}$/)
-//     .min(8)
-//     .max(16)
-//     .required()
-//     .messages({
-//       "string.base": "Password must be a string",
-//       "string.pattern.base": "Password must be a number",
-//       "string.empty": "Password is required",
-//       "string.min": "Password must be at least 8 characters",
-//       "string.max": "Phone must be at most 16 digits",
-//       "any.required": "Password is required",
-//     }),
-// });
 
 export const updateUserSchema: ObjectSchema<IUserUpdateDto> = Joi.object({
   name: Joi.string()
@@ -84,4 +55,31 @@ export const updateUserSchema: ObjectSchema<IUserUpdateDto> = Joi.object({
     "number.max": "Age must be at most {#limit}",
     "any.required": "Age is required",
   }),
+});
+
+export const queryUserSchema: ObjectSchema<any> = Joi.object({
+  limit: Joi.number().min(1).max(100).default(10).messages({
+    "number.base": "Limit must be a number",
+    "number.min": "Limit must be at least 1 user long",
+    "number.max": "Limit must be at most 100 users long",
+  }),
+  page: Joi.number().min(1).default(1).messages({
+    "number.base": "Page must be a number",
+    "number.min": "Page must be at least 1 page long",
+  }),
+  search: Joi.string().trim().messages({
+    "string.pattern.base": "Search must be a string",
+  }),
+  order: Joi.string()
+    .valid(...Object.values(OrderEnum))
+    .default(OrderEnum.ASC)
+    .messages({
+      "string.pattern.base": "Order must be a string",
+    }),
+  orderBy: Joi.string()
+    .valid(...Object.values(UserListOrderEnum))
+    .default(UserListOrderEnum.GREATED_AT)
+    .messages({
+      "string.pattern.base": "OrderBy must be a string",
+    }),
 });

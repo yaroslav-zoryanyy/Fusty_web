@@ -80,5 +80,15 @@ class CommonMiddleware {
             next();
         };
     }
+    validateQuery(schema) {
+        return (req, res, next) => {
+            const { error } = schema.validate(req.query, { abortEarly: false });
+            if (error) {
+                const message = error.details.map((e) => e.message).join(", ");
+                return next(new api_error_1.default(message, 400));
+            }
+            next();
+        };
+    }
 }
 exports.commonMiddleware = new CommonMiddleware();

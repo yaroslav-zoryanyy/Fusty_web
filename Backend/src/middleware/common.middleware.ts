@@ -97,6 +97,19 @@ class CommonMiddleware {
       next();
     };
   }
+
+  public validateQuery(schema: Joi.ObjectSchema) {
+    return (req: Request, res: Response, next: NextFunction) => {
+      const { error } = schema.validate(req.query, { abortEarly: false });
+
+      if (error) {
+        const message = error.details.map((e) => e.message).join(", ");
+        return next(new ApiError(message, 400));
+      }
+
+      next();
+    };
+  }
 }
 
 export const commonMiddleware = new CommonMiddleware();

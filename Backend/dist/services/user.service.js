@@ -5,10 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userService = void 0;
 const api_error_1 = __importDefault(require("../errors/api-error"));
+const user_presenter_1 = require("../presenters/user.presenter");
 const user_repository_1 = require("../repositories/user.repository");
 class UserService {
-    async getAllUsers() {
-        return await user_repository_1.userRepository.getAllUsers();
+    async getAllUsers(query) {
+        const { usersList, totalUsers } = await user_repository_1.userRepository.getAllUsers(query);
+        return user_presenter_1.userPresenter.toResponseList(usersList, totalUsers, query);
     }
     async getMe(tokenPayload) {
         const user = await user_repository_1.userRepository.getUserById(tokenPayload.userId);

@@ -1,7 +1,12 @@
 import { NextFunction, Request, Response } from "express";
 
 import { ITokenPayload } from "../interfaces/token.interface";
-import { IUser, IUserUpdateDto } from "../interfaces/user.interface";
+import {
+  IUser,
+  IUserListQuary,
+  IUserListResponse,
+  IUserUpdateDto,
+} from "../interfaces/user.interface";
 import { userService } from "../services/user.service";
 
 class UserController {
@@ -11,7 +16,8 @@ class UserController {
     next: NextFunction,
   ): Promise<void> {
     try {
-      const result: IUser[] = await userService.getAllUsers();
+      const query = req.query as unknown as IUserListQuary;
+      const result: IUserListResponse = await userService.getAllUsers(query);
       res.json(result);
     } catch (e) {
       next(e);

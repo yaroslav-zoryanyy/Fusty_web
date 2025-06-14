@@ -25,7 +25,6 @@ class AuthMiddleware {
         accessToken,
         TokenTypeEnum.ACCESS,
       );
-
       const pair: IToken = await tokenRepository.findByParams({ accessToken });
       if (!pair) {
         throw new ApiError("Invalid token", 401);

@@ -7,7 +7,7 @@ const auth_middleware_1 = require("../middleware/auth.middleware");
 const common_middleware_1 = require("../middleware/common.middleware");
 const user_schema_1 = require("../schemas/user.schema");
 const router = (0, express_1.Router)();
-router.get("/all", user_controller_1.userController.getAllUsers);
+router.get("/all", common_middleware_1.commonMiddleware.validateQuery(user_schema_1.queryUserSchema), user_controller_1.userController.getAllUsers);
 router.get("/me", auth_middleware_1.authMiddleware.checkAccessToken, user_controller_1.userController.getMe);
 router.put("/me", auth_middleware_1.authMiddleware.checkAccessToken, common_middleware_1.commonMiddleware.validateUpdateUser(user_schema_1.updateUserSchema), user_controller_1.userController.updateMe);
 router.delete("/me", auth_middleware_1.authMiddleware.checkAccessToken, user_controller_1.userController.deleteMe);

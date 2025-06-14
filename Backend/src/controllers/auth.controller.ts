@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 
 import { ITokenPair, ITokenPayload } from "../interfaces/token.interface";
-import { ILogin, IUserCreateDto } from "../interfaces/user.interface";
+import { ILogin, IUser, IUserCreateDto } from "../interfaces/user.interface";
 import { authService } from "../services/auth.service";
 
 class AuthController {
@@ -12,7 +12,8 @@ class AuthController {
   ): Promise<void> {
     try {
       const dto = req.body as IUserCreateDto;
-      const result = await authService.signUp(dto);
+      const result: { user: IUser; tokens: ITokenPair } =
+        await authService.signUp(dto);
       res.status(201).json(result);
     } catch (e) {
       next(e);
@@ -26,7 +27,8 @@ class AuthController {
   ): Promise<void> {
     try {
       const dto = req.body as ILogin;
-      const result = await authService.signIn(dto);
+      const result: { user: IUser; tokens: ITokenPair } =
+        await authService.signIn(dto);
       res.status(201).json(result);
     } catch (e) {
       next(e);

@@ -5,7 +5,8 @@ const user_service_1 = require("../services/user.service");
 class UserController {
     async getAllUsers(req, res, next) {
         try {
-            const result = await user_service_1.userService.getAllUsers();
+            const query = req.query;
+            const result = await user_service_1.userService.getAllUsers(query);
             res.json(result);
         }
         catch (e) {

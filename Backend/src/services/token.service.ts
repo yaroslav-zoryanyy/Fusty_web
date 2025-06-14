@@ -9,11 +9,11 @@ dotenv.config();
 
 class TokenService {
   public generateTokens(payload: ITokenPayload): ITokenPair {
-    const accessToken = jwt.sign(payload, config.jwtAccessSecret, {
+    const accessToken: string = jwt.sign(payload, config.jwtAccessSecret, {
       expiresIn: +config.jwtAccessExpiresIn * 60,
     });
 
-    const refreshToken = jwt.sign(payload, config.jwtRefreshSecret, {
+    const refreshToken: string = jwt.sign(payload, config.jwtRefreshSecret, {
       expiresIn: +config.jwtRefreshExpiresIn * 60,
     });
     return {
@@ -23,22 +23,19 @@ class TokenService {
   }
 
   public verifyToken(token: string, type: "access" | "refresh"): ITokenPayload {
+    let secret: string;
+
+    if (type === "access") {
+      secret = config.jwtAccessSecret;
+    } else if (type === "refresh") {
+      secret = config.jwtRefreshSecret;
+    } else {
+      throw new ApiError("Invalid token type", 401);
+    }
     try {
-      let secret: string;
-      if (type === "access") {
-        secret = config.jwtAccessSecret;
-      } else if (type === "refresh") {
-        secret = config.jwtRefreshSecret;
-      } else {
-        throw new ApiError("Invalid token type", 401);
-      }
-      try {
-        return jwt.verify(token, secret) as ITokenPayload;
-      } catch (e) {
-        console.log(e);
-      }
+      return jwt.verify(token, secret) as ITokenPayload;
     } catch (e) {
-      throw new ApiError(e, 401);
+      throw new ApiError("Invalid or expired token", 401);
     }
   }
 }
